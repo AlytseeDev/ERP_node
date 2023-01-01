@@ -7,7 +7,7 @@ const Salary =require('../models/salary')
 
 router.get('/', async(req,res) => {
  try{
-    const salary = await Salary.find()
+    const salary = await Salary.find().sort({date:-1})
     res.json(salary)
  }catch(err){
     res.send('Error'+err)
