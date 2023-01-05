@@ -67,7 +67,8 @@ router.post('/',async(req,res) =>{
         stats: req.body.stats,
         lorry:req.body.lorry,
         verified:req.body.verified,
-        editedBy:req.body.editedBy
+        editedBy:req.body.editedBy,
+        editedTime:req.body.editedTime
         
     })
  try{
@@ -98,7 +99,8 @@ router.put('/:slNoA',async(req,res)=>{
     rawmat.stats= req.body.stats,
     rawmat.lorry= req.body.lorry,
     rawmat.verified= req.body.verified,
-    rawmat.editedBy=req.body.editedBy
+    rawmat.editedBy=req.body.editedBy,
+    rawmat.editedTime=req.body.editedTime
 
     
    const a1 =await rawmat.save()
@@ -124,7 +126,8 @@ router.delete('/:id',async(req,res)=>{
     stats= req.body.stats,
     lorry= req.body.lorry,
     verified= req.body.verified,
-    editedBy=req.body.editedBy
+    editedBy=req.body.editedBy,
+    editedTime=req.body.editedTime
     
    const a1 =await rawmat.remove()
    res.json(a1)

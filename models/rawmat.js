@@ -57,6 +57,10 @@ const rawmatSchema = new mongoose.Schema({
     editedBy:{
         type:String,
         required:false
+    },
+    editedTime:{
+        type:String,
+        required:false
     }
 
 
