@@ -31,7 +31,7 @@ const salesSchema = new mongoose.Schema({
         required:true
     },
     dc:{
-        type:Number,
+        type:String,
         required:true
     },
     brqt:{

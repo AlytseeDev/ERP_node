@@ -32,6 +32,20 @@ router.get('/search/:key', async(req,res) => {
    ).sort({date:-1})
     res.send(rawmat);
   })
+  router.get('/srch1/:key2/:srt/:end', async(req,res) => {
+
+   let rawmat =await Rawmat.find(
+      {
+      "$and": [
+         {material:{$regex:req.params.key2}},
+         {date: {$gte:(req.params.srt),
+         $lte:(req.params.end)},
+      }
+   ]
+   }
+   ).sort({date:-1})
+    res.send(rawmat);
+  })
  
 
 router.get('/', async(req,res) => {
