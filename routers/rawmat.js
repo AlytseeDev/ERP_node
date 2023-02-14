@@ -56,6 +56,23 @@ router.get('/', async(req,res) => {
     res.send('Error'+err)
  }
 })
+
+router.get('/material/:key', async(req,res) => {
+   try{
+      const rawmat = await Rawmat.find(
+         {
+            "$or":[
+               {material:{$regex:req.params.key}}
+            ]
+           }
+      ).sort({date:-1})
+      res.json(rawmat)
+   }catch(err){
+      res.send('Error'+err)
+   }
+  })
+  
+
 router.get('/:id',async(req,res) => {
     try{
        const rawmat = await Rawmat.findById(req.params.id)
