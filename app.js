@@ -2,9 +2,9 @@ const express =require('express')
 const mongoose =require ('mongoose')
 const {authUser}= require('./auth')
 //main
-//const url ='mongodb+srv://AlytseeUser:Alytseeadmin@erpalytsee.qkwlpun.mongodb.net/?retryWrites=true&w=majority'
+const url ='mongodb+srv://AlytseeUser:Alytseeadmin@erpalytsee.qkwlpun.mongodb.net/?retryWrites=true&w=majority'
 //local
-const url='mongodb://localhost/alytsee'
+//const url='mongodb://localhost/alytsee'
  //test
 //const url='mongodb+srv://admin:Alytsee321@cluster0.gw2teuv.mongodb.net/?retryWrites=true&w=majority'
 
