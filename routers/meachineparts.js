@@ -1,7 +1,7 @@
 const express =require('express')
 const router = express.Router()
 const Meachineparts =require('../models/meachineparts')
-const Meachineparts1 =require('../models/meachineparts1')
+
 
 
 
@@ -24,8 +24,9 @@ router.get('/:id',async(req,res) => {
    })
 router.post('/',async(req,res) =>{
     const meachineparts =new Meachineparts({
-        Material: req.body.Material,
-        max: req.body.max
+        factory:req.body.factory,
+        date: req.body.date,
+        time: req.body.time
     })
  try{
     const a1 =await meachineparts.save()
@@ -39,8 +40,9 @@ router.post('/',async(req,res) =>{
 router.put('/:id',async(req,res)=>{
     try{
     const meachineparts = await Meachineparts.findById(req.params.id)
-    meachineparts.Material= req.body.Material,
-    meachineparts.max= req.body.max
+    meachineparts.factory= req.body.factory,
+    meachineparts.date= req.body.date,
+    meachineparts.time= req.body.time
 
 
    const a1 =await meachineparts.save()
@@ -53,8 +55,9 @@ router.put('/:id',async(req,res)=>{
 router.delete('/:id',async(req,res)=>{
     try{
     const meachineparts = await Meachineparts.findById(req.params.id)
-    Material= req.body.Material,
-    max=req.body.max
+    factory= req.body.factory,
+    date= req.body.date,
+    time=req.body.time
    const a1 =await meachineparts.remove()
    res.json(a1)
     }
@@ -62,6 +65,23 @@ router.delete('/:id',async(req,res)=>{
         res.send('Error' +err)
     }
 })
+router.get('/factory/:key/:srt/:end', async(req,res) => {
 
+   try{
+      const meachineparts = await Meachineparts.find(
+         {
+            "$and":[
+               {factory:{$regex:req.params.key}},
+               {date: {$gte:(req.params.srt),
+                  $lte:(req.params.end)}}
+            ]
+           }
+      ).sort({date:-1})
+      res.json(meachineparts)
+   }catch(err){
+      res.send('Error'+err)
+   }
+  })
+  
 
 module.exports =router

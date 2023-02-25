@@ -2,11 +2,15 @@ const mongoose =require('mongoose')
 const router = require('../routers/meachineparts')
 
 const meachinepartsSchema = new mongoose.Schema({
-    Material:{
+    factory:{
         type:String,
         required:true
     },
-    max:{
+    date:{
+        type:String,
+        required:true
+    },
+    time:{
         type:Number,
         required:true
     }
