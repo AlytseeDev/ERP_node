@@ -11,7 +11,7 @@ const swamidasSchema = new mongoose.Schema({
         required:true
     },
     vet:{
-        type:Number,
+        type:String,
         required:true
     }
 
