@@ -1,12 +1,12 @@
 const express =require('express')
 const router = express.Router()
-const Store1 =require('../models/store')
+const Store =require('../models/store')
 
 
 
 
 
-router.get('/1', async(req,res) => {
+router.get('/', async(req,res) => {
  try{
     const store = await Store.find()
     res.json(store)
@@ -14,7 +14,7 @@ router.get('/1', async(req,res) => {
     res.send('Error'+err)
  }
 })
-router.post('/1',async(req,res) =>{
+router.post('/',async(req,res) =>{
     const store =new Store({
         part:req.body.part,
         qn: req.body.qn
